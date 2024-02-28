@@ -20,3 +20,6 @@ connectToMongo().then(() => {
     console.log(`Server is running on port: ${port}`);
   });
 })
+
+const userRoute = require("./routes/userRoute");
+app.use("/api", userRoute);
