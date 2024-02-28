@@ -39,12 +39,12 @@ export default function Auth({children, toggleModal}) {
                 <div className="auth__field">
                     <label className="auth__field-label">Email</label>
                     <input type="email" className="auth__field-input" placeholder="Enter your email" name="email" 
-                    value={person['email']}  onChange={handleChange} required></input>
+                    value={person['email']} onChange={handleChange} required></input>
                 </div>
                 <div className="auth__field">
                     <label className="auth__field-label">Password</label>
                     <input type="password" className="auth__field-input" placeholder="Enter your password" name="password" 
-                    value={person['password']}  onChange={handleChange} required></input>
+                    value={person['password']} onChange={handleChange} required></input>
                 </div>
                 <div className="auth__button-div">
                   <button className="auth__button-div-close" onClick={toggleModal} type="button">
