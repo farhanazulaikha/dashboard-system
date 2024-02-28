@@ -3,7 +3,7 @@ const app = express();
 
 const { checkUserExist, registerUser, verifyUser } = require("../controllers/userController");
 
-app.get("/home", verifyUser);
+app.get("/main", verifyUser);
 
 app.post("/sign-in", checkUserExist);
 

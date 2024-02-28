@@ -1,7 +1,13 @@
 import './auth.css'
 import { useState } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'; 
+const BASE_URL = "http://localhost:5000/server";
 
 export default function Auth({children, toggleModal}) {
+
+    axios.defaults.withCredentials = true;
+    const navigate = useNavigate();
 
     const [person, setPerson] = useState({
         fullName: "",
@@ -19,7 +25,20 @@ export default function Auth({children, toggleModal}) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(person)
+        let url;
+        {children === "Sign Up" 
+            ? url = 'sign-up' : url = 'sign-in'
+        }
+        axios.post(`${BASE_URL}/${url}`, {
+            fullName: person.fullName,
+            email: person.email,
+            password: person.password
+        }).then(res => {
+            console.log(res.data)
+            if(res.data === "Success") {
+                navigate('/main')
+            }
+        }).catch(err => console.log(err))
     }
 
     return(

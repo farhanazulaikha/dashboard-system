@@ -22,4 +22,4 @@ connectToMongo().then(() => {
 })
 
 const userRoute = require("./routes/userRoute");
-app.use("/api", userRoute);
+app.use("/server", userRoute);
