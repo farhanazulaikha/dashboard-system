@@ -70,7 +70,7 @@ export default function Auth({children, toggleModal}) {
                         Close
                   </button>
                   <button className="auth__button-div-submit" type="submit">
-                        Submit
+                    {children}
                   </button>
                 </div>
             </form>
