@@ -4,19 +4,6 @@ const UserModel = require('../models/Users');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const registerUser = async(req, res) => {
-
-    let isAuthorized = false;
-
-    const {fullName, email, password} = req.body;
-    bcrypt.hash(password, 10)
-    .then(hash => {
-            UserModel.create({fullName, email, password: hash})
-            .then(result => res.json("Account created"))
-            .catch(err => console.log(err));
-    })
-}
-
 const verifyUser = (req, res, next) => {
     try {
         const token = req.cookies.token;
@@ -36,6 +23,26 @@ const verifyUser = (req, res, next) => {
     }
 }
 
+const registerUser = async(req, res) => {
+
+    let isAuthorized = false;
+
+    const {fullName, email, password} = req.body;
+    bcrypt.hash(password, 10)
+    .then(hash => {
+            UserModel.create({fullName, email, password: hash})
+            .then(result => {
+                const token = jwt.sign({email: result.email}, "jwt-secret-key", {expiresIn: "1d"});
+                res.cookie("token", token);
+                res.json({
+                    message: "Success",
+                    id: result._id
+                })}
+            )
+            .catch(err => console.log(err));
+    })
+}
+
 const checkUserExist = async(req, res) => {
 
     let isAuthorized = false;
@@ -49,7 +56,10 @@ const checkUserExist = async(req, res) => {
                 if(response) {
                     const token = jwt.sign({email: foundUser.email}, "jwt-secret-key", {expiresIn: "1d"})
                     res.cookie("token", token);
-                    res.json("Success")
+                    res.json({
+                        message: "Success",
+                        id: foundUser._id
+                    })
                 }
                 else {
                     res.json("password is incorrect")
@@ -60,6 +70,10 @@ const checkUserExist = async(req, res) => {
             res.json("No record existed")
         }
     })
+}
+
+const viewuserProfile = async(req, res) => {
+
 }
 
 module.exports = {
