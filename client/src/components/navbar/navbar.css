@@ -1,5 +1,5 @@
 .navbar {
-    height: 70px;
+    height: 100px;
     position: fixed;
     display: flex;
     top: 0;
@@ -8,18 +8,24 @@
     align-items: center;
     padding-inline: 20px;
     border-bottom: 1px solid;
-    z-index: -1;
-}
-
-.left-section {
-    width: 400px;
-    font-family: "Josefin Sans", sans-serif;
-    font-weight: 700;
-    font-size: 25px;
-}
-
-.right-section {
-    flex: 1;
-    display: flex;
     justify-content: end;
+}
+
+.navbar__right-section__button-div {
+    margin-top: 8px;
+}
+
+.navbar__right-section__button {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    padding: 10px;
+    color: blue;
+}
+
+.navbar__right-section__button:hover::after {
+    content: '';
+    border-bottom: 1px solid blue;
+    width: 100%;
+    display: block;
 }
