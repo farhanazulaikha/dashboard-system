@@ -1,20 +1,20 @@
 import './modal.css';
 
-export default function Modal({ toggleModal, modal, children, submitModal }) {  
+export default function Modal({ toggleModal, modal, children}) {  
     return (
       <>
         {modal && (
           <div className="modal">
             <div onClick={toggleModal} className="overlay"></div>
             <div className="modal-content">
-                <p>
+                <div>
                     { children }
-                </p>
+                </div>
                 <div className="modal-div">
                   <button className="close-modal" onClick={toggleModal}>
                         Close
                   </button>
-                  <button className="submit-modal" onClick={submitModal}>
+                  <button className="submit-modal" type="submit">
                         Submit
                   </button>
                 </div>
