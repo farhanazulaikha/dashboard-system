@@ -1,0 +1,24 @@
+.navbar {
+    height: 70px;
+    position: fixed;
+    background-color: #BBC4EB;
+    display: flex;
+    top: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    padding-inline: 20px;
+}
+
+.left-section {
+    width: 400px;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.right-section {
+    flex: 1;
+    display: flex;
+    justify-content: end;
+}

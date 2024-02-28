@@ -1,0 +1,34 @@
+.home {
+    height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home__text-one {
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 70px;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.home__text-two {
+    margin-bottom: 50px;
+    font-size: 25px;
+    font-style: italic;
+}
+
+.home__button-div-one, .home__button-div-two {
+    cursor: pointer;
+    border: none;
+    background-color: #737CCF;
+    padding: 15px 30px;
+    color: white;
+    font-size: 20px;
+    border-radius: 50px;
+}
+
+.home__button-div-one {
+    margin-right: 70px;
+}
