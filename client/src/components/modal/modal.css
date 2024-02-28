@@ -28,22 +28,3 @@ body.active-modal {
     max-width: 900px;
     min-width: 700px;
 }
-
-.modal-div {
-    display: flex;
-    justify-content: end;
-}
-
-.close-modal, .submit-modal {
-    padding: 10px 15px;
-    font-family: 'Montserrat', Arial;
-    color: white;
-    background-color: black;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.close-modal {
-    margin-right: 20px;
-}

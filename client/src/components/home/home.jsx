@@ -19,10 +19,6 @@ export default function Home() {
         setModal(!modal);
     };
 
-    const handleSubmit = () => {
-        
-    }
-
     return(
         <div className="home">
             <div>
@@ -31,7 +27,7 @@ export default function Home() {
                 <button className="home__button-div-one" onClick={handleModal} name="sign-up">Sign Up</button>
                 <button className="home__button-div-two" onClick={handleModal} name="sign-in">Sign In</button>
             </div>
-            <Modal toggleModal={handleModal} modal={modal}><Auth>{type}</Auth></Modal>
+            <Modal toggleModal={handleModal} modal={modal} submit={"submit"}><Auth toggleModal={handleModal}>{type}</Auth></Modal>
         </div>
     )
 }

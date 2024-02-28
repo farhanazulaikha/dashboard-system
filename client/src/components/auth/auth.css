@@ -43,3 +43,22 @@ form {
 .auth__field-input:focus {
     outline: none;
 }
+
+.auth__button-div {
+    display: flex;
+    justify-content: end;
+}
+
+.auth__button-div-close, .auth__button-div-submit {
+    padding: 10px 15px;
+    font-family: 'Montserrat', Arial;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.auth__button-div-close {
+    margin-right: 20px;
+}
