@@ -1,6 +1,7 @@
 import './tabular-data.css'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import moment from 'moment'
 const BASE_URL = "http://localhost:5000/person";
 
 export default function TabularData() {
@@ -51,7 +52,7 @@ export default function TabularData() {
                                     { person.jobTitle }
                                 </td>
                                 <td>
-                                    { person.employmentDate }
+                                    { moment(person.employmentDate).format('DD-MM-YYYY') }
                                 </td>
                         </tr>
                     ))}
