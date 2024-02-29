@@ -4,7 +4,7 @@ import './main.css'
 import axios from 'axios'
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom'
-const BASE_URL = "http://localhost:5000/server";
+const BASE_URL = "http://localhost:5000/user";
 
 export default function Main() {
 
