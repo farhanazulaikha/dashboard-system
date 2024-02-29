@@ -1,3 +1,4 @@
+import TabularData from '../chart/tabular-data';
 import Navbar from '../navbar/navbar';
 import Sidebar from '../sidebar/sidebar';
 import './main.css'
@@ -31,6 +32,7 @@ export default function Main() {
         <div className="main">
             <Navbar name={name} />
             <Sidebar />
+            <TabularData />
         </div>
     )
 }
