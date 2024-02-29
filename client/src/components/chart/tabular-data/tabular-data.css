@@ -54,3 +54,26 @@ table {
         text-align: left;
     }
   }
+
+  .pagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 16px;
+    gap: 5px;
+    &:active {
+        background-color: lightcyan;
+    }
+  }
+
+  .pagination .page-num {
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-weight: 400;
+    &:hover {
+        background-color: lightcyan;
+    }
+  }
