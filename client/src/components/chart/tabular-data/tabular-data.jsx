@@ -1,7 +1,20 @@
 import './tabular-data.css'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+const BASE_URL = "http://localhost:5000/person";
 
 export default function TabularData() {
     const titles = ["Full Name", "Age", "Username", "Email", "Country", "Job Title", "Employment Date"];
+    const [peopleList, setPeopleList] = useState([]);
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/people-list`)
+        .then(result => {
+            if(result.data) {
+                setPeopleList(result.data);
+            }
+        })
+    }, []);
 
     return(
         <div className="tabular-data">
@@ -17,29 +30,31 @@ export default function TabularData() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            nana
-                        </td>
-                        <td>
-                            25
-                        </td>
-                        <td>
-                            nana99
-                        </td>
-                        <td>
-                            nana99@gmail.com
-                        </td>
-                        <td>
-                            malaysia
-                        </td>
-                        <td>
-                            developer
-                        </td>
-                        <td>
-                            2019-03-01
-                        </td>
-                    </tr>
+                    {peopleList.map(person => (
+                        <tr key={person._id}>
+                                <td>
+                                    { person.name.first } { person.name.middle } { person.name.last } 
+                                </td>
+                                <td>
+                                    { person.age }
+                                </td>
+                                <td>
+                                    { person.username }
+                                </td>
+                                <td>
+                                    { person.email }
+                                </td>
+                                <td>
+                                    { person.country }
+                                </td>
+                                <td>
+                                    { person.jobTitle }
+                                </td>
+                                <td>
+                                    { person.employmentDate }
+                                </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>

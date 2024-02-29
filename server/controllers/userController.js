@@ -12,17 +12,16 @@ const verifyUser = async(req, res, next) => {
             return res.json("the token was not available")
         }
         else {
-            foundUser = await UserModel.findOne({_id: id})
+            foundUser = await UserModel.findOne({_id: id});
+            if(foundUser) {
+                return res.json({
+                    message: "Success",
+                    fullName: foundUser.fullName
+                })
+            }
             jwt.verify(token, "jwt-secret-key", (err, decoded) => {
                 if(err) return res.json("Token is wrong");
                 next();
-            })
-        }
-
-        if(foundUser) {
-            return res.json({
-                message: "Success",
-                fullName: foundUser.fullName
             })
         }
 

@@ -7,6 +7,7 @@ const connectToMongo = require("./database/connection");
 const insertPersonToMongo = require("./dashboardData/insertMany");
 const cookieParser = require("cookie-parser");
 const userRoute = require("./routes/userRoute");
+const personRoute = require("./routes/personRoute");
 
 app.use(cors({
     origin: ["http://localhost:5173"],
@@ -25,3 +26,4 @@ connectToMongo().then(() => {
 })
 
 app.use("/user", userRoute);
+app.use("/person", personRoute);
