@@ -6,4 +6,30 @@
     z-index: 2;
     width: 200px;
     border-right: 1px solid;
+    padding-top: 120px;
+}
+
+.sidebar__element {
+    display: grid;
+    /* position: fixed;
+    top: 100px; */
+    justify-content: center;
+}
+
+.sidebar__element-input-div {
+    margin-bottom: 15px;
+}
+
+.sidebar__element-input {
+    padding: 5px 10px;
+}
+
+.sidebar__element-button-div {
+    display: flex;
+    justify-content: end;
+}
+
+.sidebar__element-button {
+    cursor: pointer;
+    padding: 5px 10px;
 }
