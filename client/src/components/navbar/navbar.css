@@ -11,6 +11,10 @@
     justify-content: end;
 }
 
+span {
+    font-weight: 700;
+}
+
 .navbar__right-section__button-div {
     margin-top: 8px;
 }
