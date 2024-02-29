@@ -4,20 +4,31 @@ const UserModel = require('../models/Users');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const verifyUser = (req, res, next) => {
+const verifyUser = async(req, res, next) => {
     try {
         const token = req.cookies.token;
+        const { id } = req.params;
+        let foundUser
+
         if(!token) {
             return res.json("the token was not available")
         }
         else {
+            foundUser = await UserModel.findOne({_id: id})
             jwt.verify(token, "jwt-secret-key", (err, decoded) => {
-                if(err) return res.json("Token is wrong")
+                if(err) return res.json("Token is wrong");
                 next();
             })
         }
-        return res.json("Success")
-    }
+
+        if(foundUser) {
+            return res.json({
+                message: "Success",
+                fullName: foundUser.fullName
+            })
+        }
+
+       }
     catch(err) {
         console.log(err)
     }
@@ -70,10 +81,6 @@ const checkUserExist = async(req, res) => {
             res.json("No record existed")
         }
     })
-}
-
-const viewuserProfile = async(req, res) => {
-
 }
 
 module.exports = {

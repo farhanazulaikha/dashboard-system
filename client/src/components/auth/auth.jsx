@@ -35,7 +35,7 @@ export default function Auth({children, toggleModal}) {
             password: person.password
         }).then(res => {
             if(res.data.message === "Success") {
-                navigate(`/main/${res.data.id}`)
+                navigate(`/dashboard/${res.data.id}`)
             }
         }).catch(err => console.log(err))
     }
