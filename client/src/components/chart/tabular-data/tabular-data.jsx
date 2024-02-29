@@ -81,7 +81,7 @@ export default function TabularData() {
                 pageLinkClassName={"page-num"}
                 previousLinkClassName={"page-num"}
                 nextLinkClassName={"page-num"}
-                activeClassName={"active-page"}             
+                activeClassName={"active"}             
             />        
     </div>
     )
