@@ -9,6 +9,8 @@
     padding-inline: 20px;
     border-bottom: 1px solid;
     justify-content: end;
+    background-color: white;
+    z-index: 2;
 }
 
 span {

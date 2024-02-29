@@ -3,10 +3,11 @@
     top: 0;
     left: 0;
     bottom: 0;
-    z-index: 2;
     width: 200px;
     border-right: 1px solid;
     padding-top: 120px;
+    z-index: 3;
+    background-color: white;
 }
 
 .sidebar__element {
