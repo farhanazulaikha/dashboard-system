@@ -1,4 +1,4 @@
-import TabularData from '../chart/tabular-data';
+import TabularData from '../chart/tabular-data/tabular-data';
 import Navbar from '../navbar/navbar';
 import Sidebar from '../sidebar/sidebar';
 import './main.css'
