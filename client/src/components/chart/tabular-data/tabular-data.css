@@ -66,14 +66,16 @@ table {
     .active {
         background-color: lightcyan;
     }
-  }
-
-  .pagination .page-num {
-    padding: 8px 15px;
-    cursor: pointer;
-    border-radius: 3px;
-    font-weight: 400;
-    &:hover {
-        background-color: lightcyan;
+    .page-num {
+        padding: 8px 15px;
+        cursor: pointer;
+        border-radius: 3px;
+        font-weight: 400;
+        &:hover {
+            background-color: lightcyan;
+        }
     }
-  }
+    .break {
+        cursor: pointer;
+    }
+}
