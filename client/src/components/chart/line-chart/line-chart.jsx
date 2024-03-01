@@ -1,4 +1,4 @@
-import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from "recharts";
+import { ResponsiveContainer, LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Label } from "recharts";
 import './line-chart.css'
 
 export default function LChart({children, employmentByYearCount}) {
@@ -11,8 +11,18 @@ export default function LChart({children, employmentByYearCount}) {
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart width={500} height={300} data={data}>
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
+                <XAxis dataKey="name">
+                    <Label
+                        value="Year"
+                    />
+                </XAxis>
+                <YAxis>
+                    <Label
+                        value="Number of people employed"
+                        angle="-90"
+                        position="insideBottomLeft"
+                    />
+                </YAxis>
                 <Tooltip />
                 <Line type="monotone" dataKey="count" stroke="#8884d8" activeDot={{ r: 8 }} />
                 </LineChart>
