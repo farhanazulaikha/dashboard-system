@@ -8,3 +8,11 @@
     display: flex;
     flex-direction: row;
 }
+
+.visual-charts__pie {
+    width: 450px;
+}
+
+.visual-charts__bar {
+    flex: 1;
+}
