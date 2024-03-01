@@ -1,0 +1,11 @@
+.line-chart-container {
+    width: 500px;
+    height: 300px;
+    text-align: center;
+}
+
+.line-chart-container__children {
+    text-decoration: underline;
+    font-size: 18px;
+    margin-bottom: 10px;
+}

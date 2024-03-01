@@ -15,4 +15,6 @@
 
 .visual-charts__bar {
     flex: 1;
+    display: flex;
+    justify-content: center;
 }
