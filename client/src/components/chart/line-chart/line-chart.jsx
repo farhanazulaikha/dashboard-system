@@ -10,7 +10,7 @@ export default function LChart({children, employmentByYearCount}) {
         <div className="line-chart-container">
             <div className="line-chart-container__children">{children}</div>
             <ResponsiveContainer width="100%" height="100%">
-                <LineChart width={500} height={400} data={data} {...{overflow: 'visible'}}>
+                <LineChart width={500} height={250} data={data} {...{overflow: 'visible'}}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name">
                     <Label
