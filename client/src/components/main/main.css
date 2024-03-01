@@ -4,9 +4,16 @@
     padding-bottom: 30px;
 }
 
-.visual-charts {
+.visual-charts__one {
     display: flex;
     flex-direction: row;
+}
+
+.visual-charts__two {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+    margin-bottom: 33px;
 }
 
 .visual-charts__pie {

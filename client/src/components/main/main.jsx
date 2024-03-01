@@ -1,3 +1,4 @@
+import BChart from '../chart/bar-chart/bar-chart';
 import LChart from '../chart/line-chart/line-chart';
 import PChart from '../chart/pie-chart/pie-chart';
 import TabularData from '../chart/tabular-data/tabular-data';
@@ -101,12 +102,15 @@ export default function Main() {
         <div className="main">
             <Navbar name={name} />
             <Sidebar />
-            <div className="visual-charts">
+            <div className="visual-charts__one">
                 <div className="visual-charts__pie"><PChart ageRangeCount={ageRangeCount}>Total of people by age group</PChart></div>
                 <div className="visual-charts__bar"><LChart employmentByYearCount={employmentByYearCount}>Total of people employed by year (2019 - 2023)</LChart></div>
             </div>
+            <div className="visual-charts__two">
+                <BChart></BChart>
+            </div>
             <div>
-                {/* <TabularData peopleList={peopleList} totalPages={totalPages} recordsPerPage={recordsPerPage}/> */}
+                <TabularData peopleList={peopleList} totalPages={totalPages} recordsPerPage={recordsPerPage}/>
             </div>
         </div>
     )
