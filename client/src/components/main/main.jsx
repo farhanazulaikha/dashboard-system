@@ -99,7 +99,6 @@ export default function Main() {
         axios.get(`${PEOPLE_URL}/people-by-country-list`)
         .then(result => {
             let res = result.data;
-            console.log(res);
             if(res) {
                 getPeopleByCountryCount(res);
             }
