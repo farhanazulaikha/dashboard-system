@@ -1,4 +1,4 @@
-import PieChart from '../chart/pie-chart/pie-chart';
+import PChart from '../chart/pie-chart/pie-chart';
 import TabularData from '../chart/tabular-data/tabular-data';
 import Navbar from '../navbar/navbar';
 import Sidebar from '../sidebar/sidebar';
@@ -48,11 +48,11 @@ export default function Main() {
             <Navbar name={name} />
             <Sidebar />
             <div className="visual-charts">
-                <div><PieChart /></div>
+                <div><PChart /></div>
                 <div>hi</div>
             </div>
             <div>
-                <TabularData peopleList={peopleList} totalPages={totalPages} recordsPerPage={recordsPerPage}/>
+                {/* <TabularData peopleList={peopleList} totalPages={totalPages} recordsPerPage={recordsPerPage}/> */}
             </div>
         </div>
     )
