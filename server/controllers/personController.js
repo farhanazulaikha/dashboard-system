@@ -79,8 +79,32 @@ const getEmploymentCountByYear = async(req, res) => {
     }
 }
 
+const getPeopleByCountryCount = async(req, res) => {
+    try {
+        const peopleByCountry = await PersonModel.aggregate([
+            {
+                $match: {}
+            },
+            {
+                $group : 
+                    { _id : '$country', 
+                    count : { $sum : 1 }
+                    }
+            },
+            {
+                $sort:{'_id':1}
+            }
+        ]);
+        return res.json(peopleByCountry)
+    }
+    catch(err) {
+        console.log(err);
+    }
+}
+
 module.exports = {
     getPeopleList,
     getAgeRangeCount,
-    getEmploymentCountByYear
+    getEmploymentCountByYear,
+    getPeopleByCountryCount
 }
