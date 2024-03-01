@@ -75,7 +75,7 @@ export default function Main() {
             <Navbar name={name} />
             <Sidebar />
             <div className="visual-charts">
-                <div><PChart ageRangeCount={ageRangeCount}/></div>
+                <div><PChart ageRangeCount={ageRangeCount}>Total of data by age group</PChart></div>
             </div>
             <div>
                 <TabularData peopleList={peopleList} totalPages={totalPages} recordsPerPage={recordsPerPage}/>

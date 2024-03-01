@@ -1,12 +1,13 @@
 import { PieChart, Pie, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import './pie-chart.css'
 
-export default function PChart({ageRangeCount}) {
+export default function PChart({ageRangeCount, children}) {
 
     const data = ageRangeCount
 
     return(
         <div className="pie-chart-container">
+            <div className="pie-chart-container__children">{children}</div>
             <ResponsiveContainer width="100%" height="100%" aspect={1.5/1}>
             <PieChart width={400} height={300}>
                 <Pie

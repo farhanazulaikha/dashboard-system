@@ -2,3 +2,9 @@
     width: 400px;
     height: 300px;
 }
+
+.pie-chart-container__children {
+    text-align: center;
+    text-decoration: underline;
+    font-size: 18px;
+}
