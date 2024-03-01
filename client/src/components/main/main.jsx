@@ -26,11 +26,25 @@ export default function Main() {
     ]);
 
     const [employmentByYearCount, setEmploymentByYearCount] = useState([
-        {idx : 0, name: "2019", count: 0, fill: '#7CB9E8'},
-        {idx : 1, name: "2020", count: 0, fill: '#72A0C1'},
-        {idx : 2, name: "2021", count: 0, fill: '#0066b2'},
-        {idx : 3, name: "2022", count: 0,  fill: '#00308F'},
-        {idx : 4, name: "2023", count: 0,  fill: '#00308F'},
+        {idx : 0, name: "2019", count: 0},
+        {idx : 1, name: "2020", count: 0},
+        {idx : 2, name: "2021", count: 0},
+        {idx : 3, name: "2022", count: 0},
+        {idx : 4, name: "2023", count: 0},
+    ]);
+
+    const [peopleByCountryCount, setPeopleByCountryCount] = useState([
+        {idx : 0, name: "Brunei", count: 0},
+        {idx : 1, name: "Cambodia", count: 0},
+        {idx : 2, name: "Indonesia", count: 0},
+        {idx : 3, name: "Laos", count: 0},
+        {idx : 4, name: "Malaysia", count: 0},
+        {idx : 5, name: "Myanmar", count: 0},
+        {idx : 6, name: "Philippines", count: 0},
+        {idx : 7, name: "Singapore", count: 0},
+        {idx : 8, name: "Thailand", count: 0},
+        {idx : 9, name: "Timor-Leste", count: 0},
+        {idx : 10, name: "Vietnam", count: 0},
     ]);
 
     axios.defaults.withCredentials = true;
@@ -81,6 +95,17 @@ export default function Main() {
         })
     }, []);
 
+    useEffect(() => {
+        axios.get(`${PEOPLE_URL}/people-by-country-list`)
+        .then(result => {
+            let res = result.data;
+            console.log(res);
+            if(res) {
+                getPeopleByCountryCount(res);
+            }
+        })
+    }, []);
+
     const getAgeRangeCount = (res) => {
         setAgeRangeCount(ageRangeCount.map((ageRange, index) => {
             if(ageRange.idx === index) {
@@ -97,6 +122,13 @@ export default function Main() {
         }))
     }
 
+    const getPeopleByCountryCount = (res) => {
+        setPeopleByCountryCount(peopleByCountryCount.map((peopleByCountry, index) => {
+            if(peopleByCountry.name === res[index]._id) {
+                return {...peopleByCountry, count: res[index].count}
+            }
+        }))
+    }
 
     return(
         <div className="main">
@@ -107,7 +139,7 @@ export default function Main() {
                 <div className="visual-charts__bar"><LChart employmentByYearCount={employmentByYearCount}>Total of people employed by year (2019 - 2023)</LChart></div>
             </div>
             <div className="visual-charts__two">
-                <BChart>Number of people by country</BChart>
+                <BChart peopleByCountryCount={peopleByCountryCount}>Number of people by country</BChart>
             </div>
             <div>
                 <TabularData peopleList={peopleList} totalPages={totalPages} recordsPerPage={recordsPerPage}/>

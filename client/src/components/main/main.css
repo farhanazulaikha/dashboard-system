@@ -1,5 +1,5 @@
 .main {
-    padding-top: 120px;
+    padding-top: 90px;
     padding-left: 210px;
     padding-bottom: 30px;
 }
@@ -13,7 +13,7 @@
     display: flex;
     justify-content: center;
     margin-top: 30px;
-    margin-bottom: 37px;
+    margin-bottom: 70px;
 }
 
 .visual-charts__pie {
