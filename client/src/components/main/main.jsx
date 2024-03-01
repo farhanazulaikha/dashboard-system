@@ -132,7 +132,7 @@ export default function Main() {
     return(
         <div className="main">
             <Navbar name={name} />
-            <Sidebar />
+            <Sidebar/>
             <div className="visual-charts__one">
                 <div className="visual-charts__pie"><PChart ageRangeCount={ageRangeCount}>Total of people by age group</PChart></div>
                 <div className="visual-charts__bar"><LChart employmentByYearCount={employmentByYearCount}>Total of people employed by year (2019 - 2023)</LChart></div>
