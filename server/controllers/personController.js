@@ -44,7 +44,43 @@ const getAgeRangeCount = async(req, res) => {
     }
 }
 
+const getEmploymentCountByYear = async(req, res) => {
+    try {
+        const employmentCount = await PersonModel.aggregate([
+            {
+                $match: {}
+            },
+            {
+                $bucket: 
+                    { 
+                        groupBy: '$employmentDate',
+                        boundaries: [
+                            new Date('2019-01-01T00:00:00.000Z'),
+                            new Date('2020-01-01T00:00:00.000Z'),
+                            new Date('2021-01-01T00:00:00.000Z'),
+                            new Date('2022-01-01T00:00:00.000Z'),
+                            new Date('2023-01-01T00:00:00.000Z'),
+                            new Date('2024-01-01T00:00:00.000Z'),
+                        ],
+                        default: "Other",
+                        output: {
+                            // Output for each bucket
+                            "count": {
+                                $sum: 1
+                            },
+                        }
+                    }  
+            }
+        ]);
+        return res.json(employmentCount)
+    }
+    catch(err) {
+        console.log(err);
+    }
+}
+
 module.exports = {
     getPeopleList,
-    getAgeRangeCount
+    getAgeRangeCount,
+    getEmploymentCountByYear
 }
