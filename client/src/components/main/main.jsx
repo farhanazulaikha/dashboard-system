@@ -107,7 +107,7 @@ export default function Main() {
                 <div className="visual-charts__bar"><LChart employmentByYearCount={employmentByYearCount}>Total of people employed by year (2019 - 2023)</LChart></div>
             </div>
             <div className="visual-charts__two">
-                <BChart></BChart>
+                <BChart>Number of people by country</BChart>
             </div>
             <div>
                 <TabularData peopleList={peopleList} totalPages={totalPages} recordsPerPage={recordsPerPage}/>

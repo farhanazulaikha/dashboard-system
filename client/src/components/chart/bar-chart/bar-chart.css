@@ -1,4 +1,11 @@
 .bar-chart-container {
     width: 700px;
     height: 250px;
+    text-align: center;
+}
+
+.bar-chart-container__children {
+    text-decoration: underline;
+    font-size: 18px;
+    margin-bottom: 10px;
 }
