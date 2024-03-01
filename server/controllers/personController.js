@@ -10,6 +10,41 @@ const getPeopleList = async(req, res) => {
     }
 }
 
+const getAgeRangeCount = async(req, res) => {
+    try {
+        const ageRangeCount = await PersonModel.aggregate([
+            {
+                $match: {}
+            },
+            {
+                $bucket: 
+                    { 
+                        groupBy: '$age',
+                        boundaries: [
+                            20,
+                            31,
+                            41,
+                            51,
+                            61
+                        ],
+                        default: "Other",
+                        output: {
+                            // Output for each bucket
+                            "count": {
+                                $sum: 1
+                            },
+                        }
+                    }  
+            }
+        ]);
+        return res.json(ageRangeCount)
+    }
+    catch(err) {
+        console.log(err);
+    }
+}
+
 module.exports = {
-    getPeopleList
+    getPeopleList,
+    getAgeRangeCount
 }

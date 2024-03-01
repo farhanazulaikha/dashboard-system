@@ -16,6 +16,13 @@ export default function Main() {
     const [totalPages, setTotalPages] = useState(0);
     const [recordsPerPage] = useState(7);
 
+    const [ageRangeCount, setAgeRangeCount] = useState([
+        {idx : 0, name: "20 - 30 years old", count: 0, fill: '#7CB9E8'},
+        {idx : 1, name: "31 - 40  years old", count: 0, fill: '#72A0C1'},
+        {idx : 2, name: "41 - 50  years old", count: 0, fill: '#0066b2'},
+        {idx : 3, name: "51 - 60  years old", count: 0,  fill: '#00308F'},
+    ]);
+
     axios.defaults.withCredentials = true;
 
     const navigate = useNavigate();
@@ -43,16 +50,35 @@ export default function Main() {
         })
     }, []);
 
+    
+    useEffect(() => {
+        axios.get(`${PEOPLE_URL}/age-range-list`)
+        .then(result => {
+            let res = result.data;
+            if(res) {
+                checkAgeRange(res);
+            }
+        })
+    }, []);
+
+    const checkAgeRange = (res) => {
+        setAgeRangeCount(ageRangeCount.map((ageRange, index) => {
+            if(ageRange.idx === index) {
+                return {...ageRange, count: res[index].count}
+            }
+        }))
+    }
+
+
     return(
         <div className="main">
             <Navbar name={name} />
             <Sidebar />
             <div className="visual-charts">
-                <div><PChart /></div>
-                <div>hi</div>
+                <div><PChart ageRangeCount={ageRangeCount}/></div>
             </div>
             <div>
-                {/* <TabularData peopleList={peopleList} totalPages={totalPages} recordsPerPage={recordsPerPage}/> */}
+                <TabularData peopleList={peopleList} totalPages={totalPages} recordsPerPage={recordsPerPage}/>
             </div>
         </div>
     )
