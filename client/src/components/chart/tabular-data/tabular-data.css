@@ -1,6 +1,8 @@
 .tabular-data {
     border: 1px solid;
     padding: 20px;
+    display: grid;
+    overflow-x: auto;
 }
 
 .tabular-data__title {

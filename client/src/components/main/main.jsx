@@ -32,7 +32,12 @@ export default function Main() {
         <div className="main">
             <Navbar name={name} />
             <Sidebar />
-            <TabularData />
+            <div>
+
+            </div>
+            <div>
+                <TabularData />
+            </div>
         </div>
     )
 }
