@@ -4,16 +4,18 @@ import './line-chart.css'
 export default function LChart({children, employmentByYearCount}) {
 
     const data = employmentByYearCount;
+      
     
     return(
         <div className="line-chart-container">
             <div className="line-chart-container__children">{children}</div>
             <ResponsiveContainer width="100%" height="100%">
-                <LineChart width={500} height={300} data={data}>
+                <LineChart width={500} height={400} data={data} {...{overflow: 'visible'}}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="name">
                     <Label
                         value="Year"
+                        dy={20}
                     />
                 </XAxis>
                 <YAxis>
