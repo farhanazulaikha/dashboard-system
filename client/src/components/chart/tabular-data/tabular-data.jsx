@@ -1,16 +1,11 @@
 import './tabular-data.css'
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 import moment from 'moment';
 import ReactPaginate from 'react-paginate';
-const BASE_URL = "http://localhost:5000/person";
 
-export default function TabularData() {
+export default function TabularData({peopleList, totalPages, recordsPerPage}) {
     const titles = ["Full Name", "Age", "Username", "Email", "Country", "Job Title", "Employment Date"];
-    const [peopleList, setPeopleList] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
-    const [totalPages, setTotalPages] = useState(0);
-    const [recordsPerPage] = useState(7);
 
     const startIndex = currentPage * recordsPerPage;
     const endIndex = startIndex + recordsPerPage;
@@ -19,16 +14,6 @@ export default function TabularData() {
     const handlePageChange = (selectedPage) => {
         setCurrentPage(selectedPage.selected);
     };
-
-    useEffect(() => {
-        axios.get(`${BASE_URL}/people-list`)
-        .then(result => {
-            if(result.data) {
-                setPeopleList(result.data);
-            }
-            setTotalPages(Math.ceil(result.data.length / recordsPerPage))
-        })
-    }, []);
 
     return(
         <div className="tabular-data">

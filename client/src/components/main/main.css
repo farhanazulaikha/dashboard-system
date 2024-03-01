@@ -2,3 +2,8 @@
     padding-top: 150px;
     padding-left: 210px;
 }
+
+.visual-charts {
+    display: flex;
+    flex-direction: row;
+}
