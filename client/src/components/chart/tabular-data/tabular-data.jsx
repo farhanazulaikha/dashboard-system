@@ -18,57 +18,62 @@ export default function TabularData({peopleList, totalPages, recordsPerPage}) {
     return(
         <div className="tabular-data">
             <div className="tabular-data__title">Data list</div>
-            <table>
-                <thead>
-                    <tr>
-                        {titles.map((title, index) => (
-                            <th key={index}>
-                                { title }
-                            </th>
-                        ))}
-                    </tr>
-                </thead>
-                <tbody>
-                    {subset.map(person => (
-                        <tr key={person._id}>
-                                <td>
-                                    { person.name.first } { person.name.middle } { person.name.last } 
-                                </td>
-                                <td>
-                                    { person.age }
-                                </td>
-                                <td>
-                                    { person.username }
-                                </td>
-                                <td>
-                                    { person.email }
-                                </td>
-                                <td>
-                                    { person.country }
-                                </td>
-                                <td>
-                                    { person.jobTitle }
-                                </td>
-                                <td>
-                                    { moment(person.employmentDate).format('DD-MM-YYYY') }
-                                </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-            <ReactPaginate
-                pageCount={totalPages}
-                onPageChange={handlePageChange}
-                previousLabel={"<<"}
-                nextLabel={">>"}
-                breakLabel={"..."} 
-                containerClassName={"pagination"}
-                pageLinkClassName={"page-num"}
-                previousLinkClassName={"page-num"}
-                nextLinkClassName={"page-num"}
-                activeClassName={"active"}
-                breakClassName={"break"}        
-            />        
+            {peopleList.length > 0 ?
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                {titles.map((title, index) => (
+                                    <th key={index}>
+                                        { title }
+                                    </th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {subset.map(person => (
+                                <tr key={person._id}>
+                                        <td>
+                                            { person.name.first } { person.name.middle } { person.name.last } 
+                                        </td>
+                                        <td>
+                                            { person.age }
+                                        </td>
+                                        <td>
+                                            { person.username }
+                                        </td>
+                                        <td>
+                                            { person.email }
+                                        </td>
+                                        <td>
+                                            { person.country }
+                                        </td>
+                                        <td>
+                                            { person.jobTitle }
+                                        </td>
+                                        <td>
+                                            { moment(person.employmentDate).format('DD-MM-YYYY') }
+                                        </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                    <ReactPaginate
+                        pageCount={totalPages}
+                        onPageChange={handlePageChange}
+                        previousLabel={"<<"}
+                        nextLabel={">>"}
+                        breakLabel={"..."} 
+                        containerClassName={"pagination"}
+                        pageLinkClassName={"page-num"}
+                        previousLinkClassName={"page-num"}
+                        nextLinkClassName={"page-num"}
+                        activeClassName={"active"}
+                        breakClassName={"break"}        
+                    />  
+                </div>
+                : <div>No records can be found!</div>
+            }      
     </div>
     )
 }

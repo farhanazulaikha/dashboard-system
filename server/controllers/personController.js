@@ -10,6 +10,30 @@ const getPeopleList = async(req, res) => {
     }
 }
 
+const getPeopleListWithQuery = async(req, res) => {
+
+    let { query } = req.params;
+
+    try {
+        const list = await PersonModel.find(
+            { $or: [
+                {"name.first":  {"$regex": query, "$options": "i"}},
+                {"name.middle":  {"$regex": query, "$options": "i"}},
+                {"name.last":  {"$regex": query, "$options": "i"}},
+                {"email":  {"$regex": query, "$options": "i"} },
+                {"username":  {"$regex": query, "$options": "i"} },
+                {"jobTitle":  {"$regex": query, "$options": "i"} },
+                {"country":  {"$regex": query, "$options": "i"} }
+            ]
+        }
+        );
+        return res.json(list);
+    }
+    catch(err) {
+        console.log(err)
+    }
+}
+
 const getAgeRangeCount = async(req, res) => {
     try {
         const ageRangeCount = await PersonModel.aggregate([
@@ -106,5 +130,6 @@ module.exports = {
     getPeopleList,
     getAgeRangeCount,
     getEmploymentCountByYear,
-    getPeopleByCountryCount
+    getPeopleByCountryCount,
+    getPeopleListWithQuery
 }
