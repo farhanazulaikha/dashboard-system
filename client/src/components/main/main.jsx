@@ -47,6 +47,13 @@ export default function Main() {
         {idx : 10, name: "Vietnam", count: 0},
     ]);
 
+    const [filter, setFilter] = useState({
+        filterOne: "",
+        filterTwo: "",
+        filterThree: "",
+        filterFour: ""
+    });
+
     axios.defaults.withCredentials = true;
 
     const navigate = useNavigate();
@@ -65,7 +72,9 @@ export default function Main() {
     }, []);
 
     useEffect(() => {
-        axios.get(`${PEOPLE_URL}/people-list`)
+        axios.get(`${PEOPLE_URL}/people-list`, {
+            query: filter
+        })
         .then(result => {
             if(result.data) {
                 setPeopleList(result.data);
@@ -129,10 +138,23 @@ export default function Main() {
         }))
     }
 
+    const handleFilter = (e) => {
+        const { name, value } = e.target;
+
+        setFilter(prevState => ({
+            ...prevState,
+            [name]: value
+        }))
+    }
+
+    const handleApply = () => {
+        console.log(filter)
+    }
+
     return(
         <div className="main">
             <Navbar name={name} />
-            <Sidebar/>
+            <Sidebar handleApply={handleApply} filter={filter} setFilter={setFilter} handleFilter={handleFilter}/>
             <div className="visual-charts__one">
                 <div className="visual-charts__pie"><PChart ageRangeCount={ageRangeCount}>Total of people by age group</PChart></div>
                 <div className="visual-charts__bar"><LChart employmentByYearCount={employmentByYearCount}>Total of people employed by year (2019 - 2023)</LChart></div>

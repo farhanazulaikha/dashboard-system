@@ -2,28 +2,7 @@ import { useState} from 'react'
 import React from 'react';
 import './sidebar.css'
 
-export default function Sidebar() {
-
-    const [filter, setFilter] = useState({
-        filterOne: "",
-        filterTwo: "",
-        filterThree: "",
-        filterFour: ""
-    });
-
-    const handleFilter = (e) => {
-        const { name, value } = e.target;
-
-        setFilter(prevState => ({
-            ...prevState,
-            [name]: value
-        }))
-    }
-
-
-    const handleApply = () => {
-        
-    }
+export default function Sidebar({handleApply, filter, handleFilter}) {
 
     return(
         <div className="sidebar">
