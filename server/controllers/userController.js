@@ -44,7 +44,7 @@ const registerUser = async(req, res) => {
                 res.json({
                     message: "Success",
                     id: result._id,
-                    fullName: foundUser.fullName,
+                    fullName: result.fullName,
                     token
                 })}
             )
