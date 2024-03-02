@@ -3,9 +3,8 @@ import { useState } from 'react';
 import moment from 'moment';
 import ReactPaginate from 'react-paginate';
 
-export default function TabularData({peopleList, totalPages, recordsPerPage}) {
+export default function TabularData({peopleList, totalPages, recordsPerPage, currentPage, setCurrentPage}) {
     const titles = ["Full Name", "Age", "Username", "Email", "Country", "Job Title", "Employment Date"];
-    const [currentPage, setCurrentPage] = useState(0);
 
     const startIndex = currentPage * recordsPerPage;
     const endIndex = startIndex + recordsPerPage;

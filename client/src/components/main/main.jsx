@@ -17,6 +17,7 @@ export default function Main() {
     const [peopleList, setPeopleList] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
     const [recordsPerPage] = useState(7);
+    const [currentPage, setCurrentPage] = useState(0);
 
     const [ageRangeCount, setAgeRangeCount] = useState([
         {idx : 0, name: "20 - 30 years old", count: 0, fill: '#7CB9E8'},
@@ -139,6 +140,7 @@ export default function Main() {
     }
 
     const handleApply = () => {
+        setCurrentPage(0);
         axios.get(`${PEOPLE_URL}/people-list/${filter}`)
         .then(result => {
             if(result.data) {
@@ -160,7 +162,7 @@ export default function Main() {
                 <BChart peopleByCountryCount={peopleByCountryCount}>Number of people by country</BChart>
             </div>
             <div>
-                <TabularData peopleList={peopleList} totalPages={totalPages} recordsPerPage={recordsPerPage}/>
+                <TabularData peopleList={peopleList} totalPages={totalPages} recordsPerPage={recordsPerPage} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
             </div>
         </div>
     )
