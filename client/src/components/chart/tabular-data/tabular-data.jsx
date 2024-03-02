@@ -1,5 +1,4 @@
 import './tabular-data.css'
-import { useState } from 'react';
 import moment from 'moment';
 import ReactPaginate from 'react-paginate';
 
