@@ -16,7 +16,6 @@ const verifyUser = async(req, res, next) => {
             if(foundUser) {
                 return res.json({
                     message: "Success",
-                    fullName: foundUser.fullName
                 })
             }
             jwt.verify(token, "jwt-secret-key", (err, decoded) => {
@@ -40,11 +39,13 @@ const registerUser = async(req, res) => {
     .then(hash => {
             UserModel.create({fullName, email, password: hash})
             .then(result => {
-                const token = jwt.sign({email: result.email}, "jwt-secret-key", {expiresIn: "1d"});
+                const token = jwt.sign({id: result._id}, "jwt-secret-key", {expiresIn: "1d"});
                 res.cookie("token", token);
                 res.json({
                     message: "Success",
-                    id: result._id
+                    id: result._id,
+                    fullName: foundUser.fullName,
+                    token
                 })}
             )
             .catch(err => console.log(err));
@@ -62,11 +63,13 @@ const checkUserExist = async(req, res) => {
         if(foundUser) {
             bcrypt.compare(password, foundUser.password, (err, response) => {
                 if(response) {
-                    const token = jwt.sign({email: foundUser.email}, "jwt-secret-key", {expiresIn: "1d"})
+                    const token = jwt.sign({id: foundUser._id}, "jwt-secret-key", {expiresIn: "1d"})
                     res.cookie("token", token);
                     res.json({
                         message: "Success",
-                        id: foundUser._id
+                        id: foundUser._id,
+                        fullName: foundUser.fullName,
+                        token
                     })
                 }
                 else {

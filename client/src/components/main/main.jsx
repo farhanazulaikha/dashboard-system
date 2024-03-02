@@ -51,17 +51,20 @@ export default function Main() {
 
     axios.defaults.withCredentials = true;
 
+    let token = JSON.parse(localStorage.getItem('token'));
+    let fullName = JSON.parse(localStorage.getItem('fullName'));
+
     const navigate = useNavigate();
     const { id } = useParams();
 
     useEffect(() => {
         axios.get(`${USER_URL}/main/${id}`)
         .then(result => {
-            if(result.data.message !== "Success") {
-                navigate('/')
+            if(!token) {
+                navigate('/');
             }
             else {
-                setName(result.data.fullName);
+                setName(fullName);
             }
         })
     }, []);

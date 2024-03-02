@@ -35,6 +35,8 @@ export default function Auth({children, toggleModal}) {
             password: person.password
         }).then(res => {
             if(res.data.message === "Success") {
+                localStorage.setItem('token', JSON.stringify(res.data.token));
+                localStorage.setItem('fullName', JSON.stringify(res.data.fullName));
                 navigate(`/dashboard/${res.data.id}`)
             }
         }).catch(err => console.log(err))
