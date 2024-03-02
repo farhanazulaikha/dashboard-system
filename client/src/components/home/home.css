@@ -6,6 +6,17 @@
     align-items: center;
 }
 
+.home__title {
+    font-family: "Lora", serif;
+    font-weight: 900;
+    font-size: 40px;
+    margin-bottom: 40px;
+}
+
+.home__image-container {
+    margin-bottom: 40px;
+}
+
 .home__text-one {
     font-family: "Josefin Sans", sans-serif;
     font-size: 70px;

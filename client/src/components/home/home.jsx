@@ -1,7 +1,8 @@
 import Modal from '../modal/modal'
 import './home.css'
 import { useState } from 'react';
-import Auth from '../auth/auth'
+import Auth from '../auth/auth';
+import dashboard from '../../assets/images/dashboard.png'
 
 export default function Home() {
 
@@ -21,7 +22,11 @@ export default function Home() {
 
     return(
         <div className="home">
-            <div>
+            <div className="home__title">
+                Dashboard System
+            </div>
+            <div className="home__image-container">
+                <img src={dashboard} />
             </div>
             <div className="home__button-div">
                 <button className="home__button-div-one" onClick={handleModal} name="sign-up">Sign Up</button>
