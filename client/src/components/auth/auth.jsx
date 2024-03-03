@@ -15,6 +15,8 @@ export default function Auth({children, toggleModal}) {
         password: ""
     })
 
+    const [showError, setShowError] = useState(false);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setPerson(prevState => ({
@@ -35,9 +37,13 @@ export default function Auth({children, toggleModal}) {
             password: person.password
         }).then(res => {
             if(res.data.message === "Success") {
+                setShowError(false);
                 localStorage.setItem('token', JSON.stringify(res.data.token));
                 localStorage.setItem('fullName', JSON.stringify(res.data.fullName));
                 navigate(`/dashboard/${res.data.id}`)
+            }
+            else {
+                setShowError(true);
             }
         }).catch(err => console.log(err))
     }
@@ -55,7 +61,6 @@ export default function Auth({children, toggleModal}) {
                     :
                     ""
                 }
-
                 <div className="auth__field">
                     <label className="auth__field-label">Email</label>
                     <input type="email" className="auth__field-input" placeholder="Enter your email" name="email" 
@@ -66,6 +71,12 @@ export default function Auth({children, toggleModal}) {
                     <input type="password" className="auth__field-input" placeholder="Enter your password" name="password" 
                     value={person['password']} onChange={handleChange} required></input>
                 </div>
+                { showError ? 
+                    <div className="auth__error-message">
+                        Email has already been used!
+                    </div>
+                    : ''
+                }
                 <div className="auth__button-div">
                   <button className="auth__button-div-close" onClick={toggleModal} type="button">
                         Close

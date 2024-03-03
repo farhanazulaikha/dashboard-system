@@ -35,20 +35,31 @@ const registerUser = async(req, res) => {
     let isAuthorized = false;
 
     const {fullName, email, password} = req.body;
-    bcrypt.hash(password, 10)
-    .then(hash => {
-            UserModel.create({fullName, email, password: hash})
-            .then(result => {
-                const token = jwt.sign({id: result._id}, "jwt-secret-key", {expiresIn: "1d"});
-                res.cookie("token", token);
-                res.json({
-                    message: "Success",
-                    id: result._id,
-                    fullName: result.fullName,
-                    token
+
+    UserModel.findOne({email: email}).
+    then(foundUser => {
+        if(foundUser) {
+            res.json({
+                message: "Unsuccesful"
+            })
+        }
+        else {
+            bcrypt.hash(password, 10)
+            .then(hash => {
+                UserModel.create({fullName, email, password: hash})
+                .then(result => {
+                    const token = jwt.sign({id: result._id}, "jwt-secret-key", {expiresIn: "1d"});
+                    res.cookie("token", token);
+                    res.json({
+                        message: "Success",
+                        id: result._id,
+                        fullName: result.fullName,
+                        token
                 })}
             )
             .catch(err => console.log(err));
+        })
+        }
     })
 }
 

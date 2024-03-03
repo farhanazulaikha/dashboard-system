@@ -43,6 +43,10 @@ form {
     outline: none;
 }
 
+.auth__error-message {
+    color: red;
+}
+
 .auth__button-div {
     display: flex;
     justify-content: end;
