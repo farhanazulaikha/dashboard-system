@@ -16,6 +16,7 @@ export default function Auth({children, toggleModal}) {
     })
 
     const [showError, setShowError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -44,8 +45,15 @@ export default function Auth({children, toggleModal}) {
             }
             else {
                 setShowError(true);
+                getErrorMessage();
             }
         }).catch(err => console.log(err))
+    }
+
+    const getErrorMessage = () => {
+        {children === "Sign Up" 
+            ? setErrorMessage("Email has already been used!") : setErrorMessage("Email/password is incorrect!")
+        }
     }
 
     return(
@@ -56,7 +64,7 @@ export default function Auth({children, toggleModal}) {
                     <div className="auth__field">
                     <label className="auth__field-label">Name</label>
                     <input type="text" className="auth__field-input" placeholder="Enter your name" name="fullName" 
-                        value={person['fullName']} onChange={handleChange}></input>
+                        value={person['fullName']} onChange={handleChange} required></input>
                     </div>
                     :
                     ""
@@ -72,9 +80,7 @@ export default function Auth({children, toggleModal}) {
                     value={person['password']} onChange={handleChange} required></input>
                 </div>
                 { showError ? 
-                    <div className="auth__error-message">
-                        Email has already been used!
-                    </div>
+                    <div className="auth__error-message">{ errorMessage }</div>
                     : ''
                 }
                 <div className="auth__button-div">
